@@ -1,0 +1,9 @@
+[package]
+name = "mqconfig"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+toml = "0.5"
+itertools = "0.10"
+indexmap = "1.7"

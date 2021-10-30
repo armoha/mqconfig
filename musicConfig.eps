@@ -1,0 +1,29 @@
+/*
+[chatEvent]
+__addr__: 0x58D900
+!강퇴1 : 1000
+!강퇴2 : 1001
+!강퇴3 : 1002
+!강퇴4 : 1003
+!강퇴5 : 1004
+!강퇴6 : 1005
+!강퇴7 : 1006
+스파이더맨 : 2
+spiderman : 3
+이누야샤 : 4
+inuyasha : 5
+마비노기 : 6
+mabinogi : 7
+셜록 : 8
+sherlock : 9
+*/
+const A = py_eval("lambda *args: EUDArray(args)");
+const MusicNumber = 4;  //음악갯수
+const MusicHint1 = A(Db("외국영화"), Db("애니OST"), Db("게임OST"), Db("영국드라마"));
+const MusicHint2 = A(Db("ㅅㅍㅇㄷㅁ"), Db("ㅇㄴㅇㅅ"), Db("ㅁㅂㄴㄱ"), Db("ㅅㄹ"));
+const MusicLength = A(40, 50, 40, 50);
+const MusicAnswer = A(Db("스파이더맨:파프롬홈 OST - Mysterio Theme"), Db("이누야샤 OST - 달묘전설"), Db("마비노기 OST - 어릴적 할머니가 들려주신 옛전설"), Db("셜록 OST - Opening Titles"));
+const answerCount = A(2, 2, 2, 2);  // 맞춰야 넘어가는 개수
+const answerLen = A(2, 2, 2, 2);  // 문제별 정답 총 개수
+const answers = A(A(2, 3), A(4, 5), A(6, 7), A(8, 9));  // 문제별 채팅 인식 목록
+const answerText = A(A(Db("스파이더맨"), Db("spiderman")), A(Db("이누야샤"), Db("inuyasha")), A(Db("마비노기"), Db("mabinogi")), A(Db("셜록"), Db("sherlock")));  // 문제별 실제 정답 텍스트
