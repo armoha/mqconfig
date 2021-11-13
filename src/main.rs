@@ -99,16 +99,12 @@ const answerText = A(A(Db("{}")));  // 문제별 실제 정답 텍스트"#,
             config.chat_events.insert(format!("!강퇴{}", i), 999 + i);
         }
         let value = toml.as_table().ok_or("전체 구조 이상")?;
-        for (n, (title, table)) in value.iter().enumerate() {
+        for (title, table) in value {
             let quiz = Quiz::try_new(table).map_err(|s| format!("곡 {} 오류: {}", title, s))?;
             config.hints1.push(quiz.hints[0].clone());
             config.hints2.push(quiz.hints[1].clone());
             config.lengths.push(quiz.length);
-            let n = n.to_string();
-            if title.find(&n) != Some(0) {
-                return Err(format!("곡 {} 오류: 곡명 앞에 {} 가 와야합니다.", title, n));
-            }
-            config.display_answers.push(title[n.len()..].to_owned());
+            config.display_answers.push(title.to_owned());
             config.answer_counts.push(quiz.answer_count);
             let mut answers: Vec<u32> = Vec::new();
             for a in quiz.answers {
