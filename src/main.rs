@@ -104,7 +104,7 @@ const answerText = A(A(Db("{}")));  // 문제별 실제 정답 텍스트"#,
             config.hints1.push(quiz.hints[0].clone());
             config.hints2.push(quiz.hints[1].clone());
             config.lengths.push(quiz.length);
-            config.display_answers.push(title.to_owned());
+            config.display_answers.push(title.trim().to_owned());
             config.answer_counts.push(quiz.answer_count);
             let mut answers: Vec<u32> = Vec::new();
             for a in quiz.answers {
@@ -173,6 +173,7 @@ impl Quiz {
                         quiz.answers.push(
                             s.as_str()
                                 .ok_or(format!("정답 {} 은 문자열이어야합니다.", s))?
+                                .trim()
                                 .to_owned(),
                         );
                     }
